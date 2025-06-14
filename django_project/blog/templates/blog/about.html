@@ -1,15 +1,59 @@
 {% extends 'blog/base.html' %}
+{% load static %}
 
 {% block content %}
-<div class="col-lg-8 col-md-10 mx-auto">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit,
-        fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto
-        error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas
-        voluptatibus, minus!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur magnam, excepturi aliquid ex itaque
-        esse est vero natus quae optio aperiam soluta voluptatibus corporis atque iste neque sit tempora!</p>
+<style>
+    .about-background {
+        background-image: url("{% static 'blog/img/about-bg.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 60vh;
+        width:200vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border-radius: 12px;
+    }
+
+    .about-background h1 {
+        color: white;
+        font-size: 4rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 20px 40px;
+        border-radius: 12px;
+    }
+
+    .about-text-section {
+        margin-top: 40px;
+        background-color: #222;
+        color: white;
+        padding: 50px 20px;
+        border-radius: 12px;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .about-text-section p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+    }
+</style>
+
+<!-- Top Background Section -->
+<div class="about-background">
+    <h1>About Blog</h1>
 </div>
 
+<!-- Paragraph Section Below -->
+<div class="about-text-section mt-4">
+    <p>
+        Welcome to our blog – a space where stories come to life, ideas are shared, and conversations begin.
+        We’re passionate about creating a platform that fosters creativity, knowledge, and inspiration.
+        Whether you're here to read, learn, or connect – we’re glad you’re with us.
+    </p>
+</div>
 {% endblock content %}
-

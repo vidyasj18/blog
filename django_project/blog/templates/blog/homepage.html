@@ -1,21 +1,72 @@
 {% extends 'blog/base.html' %}
+{% load static %}
 
 {% block content %}
+<style>
+    .hero {
+        background: url("{% static 'blog/img/home-bg.jpg' %}") no-repeat center center;
+        background-size: cover;
+        height: 100vh;
+        width: 200vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: purple;
+        text-align: center;
+        padding: 50px;
+    }
 
-<div class="col-lg-8 col-md-10 mx-auto">
-    {% for blog in blogs %}
-    <div class="post-preview">
-        <h2 class="post-title">
-           <a href="{% url 'blog-post-detail' blog.id   %}"> {{ blog.title }} </a>
-        </h2>
-        <p>
-            {{ blog.content|slice:":65" }} ... <a href="{% url 'blog-post-detail' blog.id   %}">read more </a>
-        </p>
-        <p class="post-meta">Posted by : {{ blog.author.username }}
-            on: {{ blog.post_created }}</p>
+    .hero h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+
+    .blog-section {
+        padding: 60px 20px;
+        background-color: #f8f9fa;
+    }
+
+    .post-preview {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        margin-bottom: 30px;
+    }
+
+    .post-preview a {
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    .post-preview a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<!-- Hero Section with Big Background Image -->
+<section class="hero">
+    <div>
+        <h1>Welcome to Blog</h1>
+        <p class="lead">Explore the latest stories and updates</p>
     </div>
-    <hr>
-    {% endfor %}
-</div>
+</section>
 
-{% endblock content %}
+<!-- Blog Section -->
+<section class="blog-section container">
+    <div class="row justify-content-center">
+        {% for blog in blogs %}
+            <div class="col-md-8 col-lg-6">
+                <div class="post-preview">
+                    <h2><a href="{% url 'blog-post-detail' blog.id %}">{{ blog.title }}</a></h2>
+                    <p>{{ blog.content|slice:":100" }}... <a href="{% url 'blog-post-detail' blog.id %}">Read more</a></p>
+                    <small>Posted by {{ blog.author.username }} on {{ blog.post_created|date:"F j, Y" }}</small>
+                </div>
+            </div>
+        {% empty %}
+            <p>No blog posts yet.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
