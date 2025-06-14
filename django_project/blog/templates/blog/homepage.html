@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<div class="col-lg-8 col-md-10 mx-auto">
+    {% for blog in blogs %}
+    <div class="post-preview">
+        <h2 class="post-title">
+           <a href="{% url 'blog-post-detail' blog.id   %}"> {{ blog.title }} </a>
+        </h2>
+        <p>
+            {{ blog.content|slice:":65" }} ... <a href="{% url 'blog-post-detail' blog.id   %}">read more </a>
+        </p>
+        <p class="post-meta">Posted by : {{ blog.author.username }}
+            on: {{ blog.post_created }}</p>
+    </div>
+    <hr>
+    {% endfor %}
+</div>
+
+{% endblock content %}
