@@ -1,0 +1,26 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+
+# SQLite database (optional — include if you're using SQLite)
+*.sqlite3
+
+# Environment folders
+venv/
+env/
+ENV/
+
+# VS Code files (optional)
+.vscode/
+
+# macOS system file
+.DS_Store
+
+# Allow important project files to be tracked
+!Procfile
+!manage.py
+!requirements.txt
+!*.html
+!*.css
+!*.js
